@@ -8,6 +8,41 @@ namespace SendInBlue
 {
     public class ListService : SendInBlueServiceBase
     {
+        public static ServiceResponse<ListCreateResponse> Create(ListCreateOptions options)
+        {
+            Request request = new Request()
+            {
+                Url = Urls.ListCreate,
+                Method = "POST",
+                Content = Serialize(options)
+            };
+
+            return Requestor.ExecuteRequest<ListCreateResponse>(request);
+        }
+
+        public static ServiceResponse<EmptyResponse> Update(int listId, ListCreateOptions options)
+        {
+            Request request = new Request()
+            {
+                Url = String.Format(Urls.ListUpdate, listId),
+                Method = "PUT",
+                Content = Serialize(options)
+            };
+
+            return Requestor.ExecuteRequest<EmptyResponse>(request);
+        }
+
+        public static ServiceResponse<EmptyResponse> Delete(int listId)
+        {
+            Request request = new Request()
+            {
+                Url = String.Format(Urls.ListDelete, listId),
+                Method = "DELETE"
+            };
+
+            return Requestor.ExecuteRequest<EmptyResponse>(request);
+        }
+
         public static ServiceResponse<ListAddUserResponse> AddUser(int listId, ListAddUserOptions options)
         {
             Request request = new Request()

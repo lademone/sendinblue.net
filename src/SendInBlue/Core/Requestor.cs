@@ -36,7 +36,17 @@ namespace SendInBlue
 
                 Stream responseStream = null;
 
-                responseStream = ((HttpWebResponse)webRequest.GetResponse()).GetResponseStream() as Stream;
+                try
+                {
+                    HttpWebResponse response;
+                    response = webRequest.GetResponse() as HttpWebResponse;
+
+                    responseStream = response.GetResponseStream() as Stream;
+                }
+                catch (WebException ex)
+                {
+                    responseStream = ex.Response.GetResponseStream() as Stream;
+                }
 
                 using (var reader = new StreamReader(responseStream, Encoding.UTF8))
                 {

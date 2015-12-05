@@ -3,35 +3,33 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SendInBlue.Tests.Services.List
+namespace SendInBlue.Tests.Services.User
 {
     [TestClass]
     public class UserServiceTest
     {
-        [TestMethod]
-        public void UserService_Create()
-        {
-            var options = new UserCreateUpdateOptions()
-            {
-                Email = "johndoe@live.com"
-            };
-
-            var response = UserService.Create(options);
-
-            Assert.IsTrue(response.Data.Id > 0);
-        }
+        public const string USER = "johndoe@live.com";
 
         [TestMethod]
-        public void UserService_Get()
+        public void UserService_CRUD()
         {
-            var options = new UserGetOptions()
+            var createOptions = new UserCreateUpdateOptions()
             {
-                Email = "johndoe@live.com"
+                Email = USER
             };
 
-            var response = UserService.Get(options);
+            var createResponse = UserService.Create(createOptions);
 
-            Assert.IsTrue(response.Data.Email == "johndoe@live.com");
+            Assert.IsTrue(createResponse.Data.Id > 0);
+
+            var getOptions = new UserGetOptions()
+            {
+                Email = USER
+            };
+
+            var getResponse = UserService.Get(getOptions);
+
+            Assert.IsTrue(getResponse.Data.Email == USER);
         }
     }
 }

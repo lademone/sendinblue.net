@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace SendInBlue
 {
-    public class ListDeleteUserResponse
+    public class FolderCreateResponse
     {
-        [JsonProperty("success")]
-        public List<string> Success { get; set; }
-
-        
+        [JsonProperty("id")]
+        public int Id { get; set; }
     }
 }

@@ -8,56 +8,55 @@ namespace SendInBlue.Tests.Services.List
     [TestClass]
     public class ListServiceTest
     {
-        [TestMethod]
-        public void ListService_AddUser()
-        {
-            var options = new ListAddUserOptions()
-            {
-                Users = new List<string>() { "johndoe@live.com" }
-            };
-
-            var response = ListService.AddUser(5, options);
-
-            Assert.IsTrue(response.Code == ResponseTypes.Success);
-        }
+        public const int FOLDER_ID = 8;
+        public const string USER = "johndoe@live.com";
 
         [TestMethod]
-        public void ListService_AddUser_Fail()
+        public void ListService_CRUD_All()
         {
-            var options = new ListAddUserOptions()
+            var createOptions = new ListCreateOptions()
             {
-                Users = new List<string>() { "johndoe@live.com" }
+                Name = "Test" + Guid.NewGuid().ToString(),
+                Parent = FOLDER_ID
             };
 
-            var response = ListService.AddUser(Int32.MaxValue, options);
+            var createResponse = ListService.Create(createOptions);
 
-            Assert.IsTrue(response.Code != ResponseTypes.Success);
-        }
+            Assert.IsTrue(createResponse.Code == ResponseTypes.Success);
 
-        [TestMethod]
-        public void ListService_DeleteUser_Fail()
-        {
-            var options = new ListDeleteUserOptions()
+            int listId = createResponse.Data.Id;
+
+            var updateOptions = new ListCreateOptions()
             {
-                Users = new System.Collections.Generic.List<string>() { "johndoe@live.com" }
+                Name = createOptions.Name + "-1",
+                Parent = FOLDER_ID
             };
 
-            var response = ListService.DeleteUser(Int32.MaxValue, options);
+            var updateResponse = ListService.Update(listId, updateOptions);
 
-            Assert.IsTrue(response.Code != ResponseTypes.Success);
-        }
+            Assert.IsTrue(updateResponse.Code == ResponseTypes.Success);
 
-        [TestMethod]
-        public void ListService_DeleteUser()
-        {
-            var options = new ListDeleteUserOptions()
+            var addUseroptions = new ListAddUserOptions()
             {
-                Users = new List<string>() { "johndoe@live.com" }
+                Users = new List<string>() { USER }
             };
 
-            var response = ListService.DeleteUser(5, options);
+            var addUserResponse = ListService.AddUser(listId, addUseroptions);
 
-            Assert.IsTrue(response.Code != ResponseTypes.Success);
+            Assert.IsTrue(addUserResponse.Code == ResponseTypes.Success);
+
+            var deleteUserOptions = new ListDeleteUserOptions()
+            {
+                Users = new List<string>() { USER }
+            };
+
+            var deleteUserResponse = ListService.DeleteUser(listId, deleteUserOptions);
+
+            Assert.IsTrue(deleteUserResponse.Code == ResponseTypes.Success);
+
+            var deleteResponse = ListService.Delete(listId);
+
+            Assert.IsTrue(deleteResponse.Code == ResponseTypes.Success);
         }
     }
 }

@@ -50,6 +50,14 @@
     <Compile Include="Core\ServerResponse.cs" />
     <Compile Include="Core\Request.cs" />
     <Compile Include="Core\Requestor.cs" />
+    <Compile Include="Services\EmptyResponse.cs" />
+    <Compile Include="Services\Folder\FolderUpdateOptions.cs" />
+    <Compile Include="Services\Folder\FolderCreateOptions.cs" />
+    <Compile Include="Services\Folder\FolderCreateResponse.cs" />
+    <Compile Include="Services\Folder\FolderService.cs" />
+    <Compile Include="Services\List\ListUpdateOptions.cs" />
+    <Compile Include="Services\List\ListCreateResponse.cs" />
+    <Compile Include="Services\List\ListCreateOptions.cs" />
     <Compile Include="Services\ServiceResponse.cs" />
     <Compile Include="Core\ResponseTypes.cs" />
     <Compile Include="Core\SendInBlueException.cs" />

@@ -12,6 +12,36 @@
             get { return BaseUrl + "/user/{0}"; }
         }
 
+        public static string FolderCreate
+        {
+            get { return BaseUrl + "/folder"; }
+        }
+
+        public static string FolderUpdate
+        {
+            get { return BaseUrl + "/folder/{0}"; }
+        }
+
+        public static string FolderDelete
+        {
+            get { return BaseUrl + "/folder/{0}"; }
+        }
+
+        public static string ListCreate
+        {
+            get { return BaseUrl + "/list"; }
+        }
+
+        public static string ListUpdate
+        {
+            get { return BaseUrl + "/list/{0}"; }
+        }
+
+        public static string ListDelete
+        {
+            get { return BaseUrl + "/list/{0}"; }
+        }
+
         public static string ListAddUser
         {
             get { return BaseUrl + "/list/{0}/users"; }

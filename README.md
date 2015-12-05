@@ -3,7 +3,7 @@ SendInBlue .Net is a client for SendInBlue.com API
 
 ### Add an user
 
-	UserCreateUpdateOptions options = new UserCreateUpdateOptions()
+	var options = new UserCreateUpdateOptions()
 	{
 		Email = "johndoe@live.com"
 	};
