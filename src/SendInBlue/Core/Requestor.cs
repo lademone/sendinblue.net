@@ -66,10 +66,17 @@ namespace SendInBlue
 
                     if (rawResponse.Data != null &&
                         rawResponse.Data["data"] != null &&
-                        rawResponse.Data["data"].HasValues &&
-                        rawResponse.Data["data"] is JObject)
+                        rawResponse.Data["data"].HasValues)
                     {
-                        response.Data = JsonConvert.DeserializeObject<T>(rawResponse.Data["data"].ToString());
+                        if (rawResponse.Data["data"] is JObject)
+                            response.Data = JsonConvert.DeserializeObject<T>(rawResponse.Data["data"].ToString());
+                        else if (rawResponse.Data["data"] is JArray)
+                        {
+                            var dataList = JsonConvert.DeserializeObject<List<T>>(rawResponse.Data["data"].ToString());
+
+                            if (dataList != null)
+                                response.Data = dataList.FirstOrDefault();
+                        }
                     }
 
                     return response;

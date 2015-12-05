@@ -42,5 +42,28 @@ namespace SendInBlue
 
             return Requestor.ExecuteRequest<EmptyResponse>(request);
         }
+
+        public static ServiceResponse<FolderGetResponse> Get(int folderId)
+        {
+            Request request = new Request()
+            {
+                Url = String.Format(Urls.FolderGet, folderId),
+                Method = "GET"
+            };
+
+            return Requestor.ExecuteRequest<FolderGetResponse>(request);
+        }
+
+        public static ServiceResponse<FolderGetAllResponse> GetAll(FolderGetAllOptions options)
+        {
+            Request request = new Request()
+            {
+                Url = String.Format(Urls.FolderGetAll, options.Page, options.PageLimit),
+                Method = "GET",
+                Content = Serialize(options)
+            };
+
+            return Requestor.ExecuteRequest<FolderGetAllResponse>(request);
+        }
     }
 }

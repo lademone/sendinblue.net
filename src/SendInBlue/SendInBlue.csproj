@@ -51,6 +51,9 @@
     <Compile Include="Core\Request.cs" />
     <Compile Include="Core\Requestor.cs" />
     <Compile Include="Services\EmptyResponse.cs" />
+    <Compile Include="Services\Folder\FolderGetAllResponse.cs" />
+    <Compile Include="Services\Folder\FolderGetAllOptions.cs" />
+    <Compile Include="Services\Folder\FolderGetResponse.cs" />
     <Compile Include="Services\Folder\FolderUpdateOptions.cs" />
     <Compile Include="Services\Folder\FolderCreateOptions.cs" />
     <Compile Include="Services\Folder\FolderCreateResponse.cs" />

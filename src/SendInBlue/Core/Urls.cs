@@ -27,6 +27,16 @@
             get { return BaseUrl + "/folder/{0}"; }
         }
 
+        public static string FolderGet
+        {
+            get { return BaseUrl + "/folder/{0}"; }
+        }
+
+        public static string FolderGetAll
+        {
+            get { return BaseUrl + "/folder/index/page/{0}/page_limit/{1}"; }
+        }
+
         public static string ListCreate
         {
             get { return BaseUrl + "/list"; }

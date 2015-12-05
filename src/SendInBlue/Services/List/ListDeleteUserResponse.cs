@@ -11,7 +11,5 @@ namespace SendInBlue
     {
         [JsonProperty("success")]
         public List<string> Success { get; set; }
-
-        
     }
 }
