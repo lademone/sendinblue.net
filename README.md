@@ -3,8 +3,8 @@ SendInBlue .Net is a client for SendInBlue.com API
 
 Note: It's not contain all API services (only list and user) for the moment
 
-[NuGet downloads](https://img.shields.io/nuget/dt/sendinblue.net.svg)
-[NuGet version](https://img.shields.io/nuget/v/sendinblue.net.svg)(http://www.nuget.org/packages/sendinblue.net)
+[![NuGet downloads](https://img.shields.io/nuget/dt/sendinblue.net.svg)]
+[![NuGet version](https://img.shields.io/nuget/v/sendinblue.net.svg)](http://www.nuget.org/packages/sendinblue.net)
 
 ### Add an user
 
